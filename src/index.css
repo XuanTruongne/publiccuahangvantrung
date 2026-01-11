@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Industrial Orange/Yellow Theme */
+    --background: 30 10% 98%;
+    --foreground: 30 10% 10%;
+    
+    --card: 30 10% 100%;
+    --card-foreground: 30 10% 10%;
+    
+    --popover: 30 10% 100%;
+    --popover-foreground: 30 10% 10%;
+    
+    --primary: 32 95% 50%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 30 5% 92%;
+    --secondary-foreground: 30 10% 20%;
+    
+    --muted: 30 5% 95%;
+    --muted-foreground: 30 5% 45%;
+    
+    --accent: 45 100% 50%;
+    --accent-foreground: 30 10% 10%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 30 10% 88%;
+    --input: 30 10% 88%;
+    --ring: 32 95% 50%;
+    
+    --radius: 0.5rem;
+    
+    /* Custom colors */
+    --industrial-dark: 220 15% 18%;
+    --industrial-gray: 220 10% 35%;
+    --industrial-light: 30 5% 96%;
+    --warning-yellow: 45 100% 50%;
+    --success-green: 142 76% 36%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(32 95% 50%) 0%, hsl(45 100% 50%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(220 15% 18%) 0%, hsl(220 15% 12%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(220 15% 18% / 0.95) 0%, hsl(220 15% 25% / 0.9) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px hsl(30 10% 10% / 0.05);
+    --shadow-md: 0 4px 6px hsl(30 10% 10% / 0.1);
+    --shadow-lg: 0 10px 25px hsl(30 10% 10% / 0.15);
+    --shadow-glow: 0 0 30px hsl(32 95% 50% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 15% 10%;
+    --foreground: 30 10% 95%;
+    
+    --card: 220 15% 14%;
+    --card-foreground: 30 10% 95%;
+    
+    --popover: 220 15% 14%;
+    --popover-foreground: 30 10% 95%;
+    
+    --primary: 32 95% 55%;
+    --primary-foreground: 220 15% 10%;
+    
+    --secondary: 220 10% 22%;
+    --secondary-foreground: 30 10% 90%;
+    
+    --muted: 220 10% 18%;
+    --muted-foreground: 30 5% 55%;
+    
+    --accent: 45 100% 55%;
+    --accent-foreground: 220 15% 10%;
+    
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 10% 25%;
+    --input: 220 10% 25%;
+    --ring: 32 95% 55%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-bold;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-md 
+           hover:opacity-90 transition-all duration-300 shadow-md hover:shadow-lg
+           active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground font-semibold px-6 py-3 rounded-md 
+           hover:bg-secondary/80 transition-all duration-300 border border-border;
+  }
+  
+  .card-industrial {
+    @apply bg-card rounded-lg border border-border shadow-md 
+           hover:shadow-lg transition-all duration-300 overflow-hidden;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+  
+  .industrial-stripe {
+    background: repeating-linear-gradient(
+      45deg,
+      hsl(var(--warning-yellow)),
+      hsl(var(--warning-yellow)) 10px,
+      hsl(var(--industrial-dark)) 10px,
+      hsl(var(--industrial-dark)) 20px
+    );
+  }
+  
+  .glass-effect {
+    @apply backdrop-blur-md bg-background/80;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
